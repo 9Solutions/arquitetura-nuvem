@@ -8,6 +8,20 @@ resource "aws_vpc" "vpc_terraform" {
   }
 }
 
+resource "aws_internet_gateway" "igw-caixadesapato" {
+  depends_on = [
+    aws_vpc.vpc_terraform,
+    aws_subnet.public_subnet,
+    aws_subnet.private_subnet
+  ]
+
+  vpc_id = aws_vpc.vpc_terraform.id
+
+  tags = {
+    Name = "igw-caixadesapato"
+  }
+}
+
 resource "aws_route_table" "rtb_main_caixadesapato" {
   depends_on = [
     aws_vpc.vpc_terraform,
@@ -36,7 +50,6 @@ resource "aws_route_table" "rtb_main_caixadesapato" {
 resource "aws_route_table" "rtb_private_caixadesapato" {
   depends_on = [
     aws_vpc.vpc_terraform,
-    aws_nat_gateway.ngw-caixadesapato,
     aws_subnet.private_subnet
   ]
 
@@ -44,25 +57,10 @@ resource "aws_route_table" "rtb_private_caixadesapato" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.ngw-caixadesapato.id
+    gateway_id = aws_internet_gateway.igw-caixadesapato.id
   }
 
   tags = {
     Name = "rtb-private-caixadesapato"
-  }
-}
-
-
-resource "aws_internet_gateway" "igw-caixadesapato" {
-  depends_on = [
-    aws_vpc.vpc_terraform,
-    aws_subnet.public_subnet,
-    aws_subnet.private_subnet
-  ]
-
-  vpc_id = aws_vpc.vpc_terraform.id
-
-  tags = {
-    Name = "igw-caixadesapato"
   }
 }
