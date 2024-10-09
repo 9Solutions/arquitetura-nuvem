@@ -101,6 +101,10 @@ resource "aws_security_group" "sg_gateway_lambda" {
     protocol    = "tcp"
     cidr_blocks = ["10.0.0.0/24"]
   }
+
+  tags = {
+    Name = "access-lambdas"
+  }
 }
 
 
