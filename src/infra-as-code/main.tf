@@ -24,6 +24,4 @@ module "lambdas" {
 
   private_subnet = module.vpc.private_subnet
   security_group_ids = module.vpc.security_group_ids
-  s3_bucket = module.storage.aws_s3_bucket
-  s3_object = module.storage.aws_s3_object
 }
