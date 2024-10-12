@@ -99,7 +99,7 @@ resource "aws_security_group" "sg_gateway_lambda" {
     from_port   = 0
     to_port     = 0
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/24"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {

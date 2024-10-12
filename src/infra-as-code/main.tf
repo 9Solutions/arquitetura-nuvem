@@ -25,3 +25,10 @@ module "lambdas" {
   private_subnet = module.vpc.private_subnet
   security_group_ids = module.vpc.security_group_ids
 }
+
+module "api_gateway_rest" {
+  source = "./modules/api-gateway"
+
+  lambda_pdf_attributes = module.lambdas.lambda_generate_pdf
+  lambda_image_attributes = module.lambdas.lambda_upload_image
+}
