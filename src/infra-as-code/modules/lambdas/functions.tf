@@ -3,8 +3,8 @@ resource "aws_lambda_function" "lambda_generate_pdf" {
   role          = local.role_lambda_arn
   runtime       = "nodejs18.x"
   handler     = "index.handler"
-  timeout = 300
-  memory_size = 300
+  timeout = 60
+  memory_size = 1024
 
   filename = "index.zip"
 }
@@ -15,7 +15,7 @@ resource "aws_lambda_function" "lambda_upload_image" {
   runtime = "nodejs18.x"
   handler = "index.handler"
   timeout = 30
-  memory_size = 128
+  memory_size = 200
 
   filename = "index.zip"
 }
