@@ -11,7 +11,8 @@ resource "aws_vpc" "vpc_terraform" {
 resource "aws_internet_gateway" "igw-caixadesapato" {
   depends_on = [
     aws_vpc.vpc_terraform,
-    aws_subnet.public_subnet,
+    aws_subnet.public_subnet_av1,
+    aws_subnet.public_subnet_av2,
     aws_subnet.private_subnet
   ]
 
@@ -25,7 +26,8 @@ resource "aws_internet_gateway" "igw-caixadesapato" {
 resource "aws_route_table" "rtb_main_caixadesapato" {
   depends_on = [
     aws_vpc.vpc_terraform,
-    aws_subnet.public_subnet,
+    aws_subnet.public_subnet_av1,
+    aws_subnet.public_subnet_av2,
     aws_internet_gateway.igw-caixadesapato
   ]
 
