@@ -2,8 +2,11 @@ output "vpc" {
   value = aws_vpc.vpc_terraform.id
 }
 
-output "public_subnet" {
-  value = aws_subnet.public_subnet_av1.id
+output "public_subnets" {
+  value = [
+    aws_subnet.public_subnet_av1.id,
+    aws_subnet.public_subnet_av2.id
+  ]
 }
 
 output "private_subnet" {
