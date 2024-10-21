@@ -17,3 +17,7 @@ variable "security_group_webserver" {
 variable "security_group_api" {
     type = string
 }
+
+variable "vpc_id" {
+    type = string 
+}

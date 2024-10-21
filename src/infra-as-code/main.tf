@@ -41,4 +41,5 @@ module "instances" {
   private_subnet = module.vpc.private_subnet
   security_group_webserver = module.vpc.security_group_ids[0]
   security_group_api = module.vpc.security_group_ids[1]
+  vpc_id = module.vpc.vpc
 }

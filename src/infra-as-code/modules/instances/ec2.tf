@@ -1,6 +1,6 @@
 resource "aws_instance" "web_server_1" {
     ami = "ami-0866a3c8686eaeeba"
-    instance_type = "t2.micro"
+    instance_type = "t2.medium"
     key_name = "access-webserver"
 
     subnet_id = var.public_subnet_1
@@ -14,13 +14,13 @@ resource "aws_instance" "web_server_1" {
     }
 
     tags = {
-        Name = "web-server-1"
+      Name = "web-server-1"
     }
 }
 
 resource "aws_instance" "web_server_2" {
     ami = "ami-0866a3c8686eaeeba"
-    instance_type = "t2.micro"
+    instance_type = "t2.medium"
     key_name = "access-webserver"
 
     ebs_block_device {
@@ -40,13 +40,16 @@ resource "aws_instance" "web_server_2" {
 
 resource "aws_instance" "api_server" {
     ami = "ami-0866a3c8686eaeeba"
-    instance_type = "t2.micro"
+    instance_type = "t2.medium"
     key_name = "access-webserver"
 
     ebs_block_device {
       device_name = "/dev/sda1"
       volume_size = 50
       volume_type = "gp3"
+      tags = {
+        Name = "volume-backend"
+      }
     }
 
     subnet_id = var.private_subnet
