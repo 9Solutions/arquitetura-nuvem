@@ -1,7 +1,7 @@
 variable "id_account" {
   description = "Id da conta"
   type        = string
-  default     = "810673762812"
+  default     = "731390812087"
 }
 
 locals {
