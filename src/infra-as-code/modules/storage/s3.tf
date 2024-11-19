@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "s3_caixadesapato" {
-    bucket = "bucket-caixadesapato"
+    bucket = "bucket-caixadesapato-prd"
 
     tags = {
       Name = "S3 Projeto Caixa de Sapato"

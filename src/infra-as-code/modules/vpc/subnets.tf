@@ -31,7 +31,7 @@ resource "aws_subnet" "private_subnet" {
 
   vpc_id            = aws_vpc.vpc_terraform.id
   cidr_block        = "10.0.0.128/25"
-  availability_zone = "us-east-1b"
+  availability_zone = "us-east-1c"
 
   tags = {
     Name = "sub-pri-caixadesapato"
